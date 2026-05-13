@@ -1,0 +1,40 @@
+<div *ngIf="loading">Loading cart...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div *ngIf="!loading && cartItems.length === 0">
+  <p>Your cart is empty. <a routerLink="/products">Go shopping</a></p>
+</div>
+
+<div *ngIf="!loading && cartItems.length > 0">
+  <div class="cart-item" *ngFor="let item of cartItems">
+    <img [src]="item.product?.imageUrl" alt="{{ item.product?.name }}" />
+    <div class="details">
+      <h3>{{ item.product?.name }}</h3>
+      <p [style.color]="item.product?.price | priceColor">
+        Price: {{ item.product?.price | indianRupee }}
+      </p>
+      <div class="quantity">
+        <button (click)="decreaseQuantity(item)">-</button>
+        <span>{{ item.quantity }}</span>
+        <button (click)="increaseQuantity(item)">+</button>
+      </div>
+      <button class="remove" (click)="removeItem(item)">Remove</button>
+    </div>
+    <div
+      class="subtotal"
+      [style.color]="(item.product?.price || 0) * item.quantity | priceColor"
+    >
+      {{ (item.product?.price || 0) * item.quantity | indianRupee }}
+    </div>
+  </div>
+
+  <hr />
+  <div class="cart-summary">
+    <h2 [style.color]="getTotal() | priceColor">
+      Total: {{ getTotal() | indianRupee }}
+    </h2>
+    <button class="checkout-button" routerLink="/checkout">
+      Proceed to Checkout
+    </button>
+  </div>
+</div>

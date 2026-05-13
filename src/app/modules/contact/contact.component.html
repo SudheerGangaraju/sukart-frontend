@@ -1,0 +1,74 @@
+<div class="page-layout">
+
+  <!-- LEFT: FORM -->
+  <div class="form-section">
+
+    <h2 class="form-title">Contact Us</h2>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="form-container">
+
+      <div class="form-group">
+        <label>Name</label>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="name">
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <label>Phone</label>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="phone">
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="email">
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <label>Preferred Contact</label>
+        <mat-radio-group formControlName="contactMode">
+          <mat-radio-button value="call">Call</mat-radio-button>
+          <mat-radio-button value="sms">SMS</mat-radio-button>
+          <mat-radio-button value="email">Email</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="form-group">
+        <mat-checkbox formControlName="terms">
+          Accept Terms & Conditions
+        </mat-checkbox>
+      </div>
+
+      <button mat-raised-button color="primary"
+        [disabled]="contactForm.invalid"
+        type="submit">
+        Submit
+      </button>
+
+    </form>
+  </div>
+
+  <!-- RIGHT: CARD -->
+  <div class="page-card">
+    <h2>Contact Info</h2>
+    <p>If you have questions or need help, we're here for you.</p>
+
+    <ul>
+      <li>Email: support@sukart.com</li>
+      <li>Phone: +1 (800) 123-4567</li>
+      <li>Address: 123 eKart Avenue, Commerce City</li>
+    </ul>
+
+    <button (click)="getLocationDetails()">My Location Details</button>
+
+    <p *ngIf="isLocationLoading">Loading location...</p>
+    <p *ngIf="locationData && !isLocationLoading">
+      Your location: {{ locationData.city }}, {{ locationData.regionName }}
+    </p>
+  </div>
+
+</div>

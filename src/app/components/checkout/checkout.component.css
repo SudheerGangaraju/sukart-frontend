@@ -1,0 +1,25 @@
+.checkout-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+button {
+  margin-top: 16px;
+  padding: 8px 16px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background: #1259a8;
+}
+
+.error {
+  color: red;
+  margin: 12px 0;
+}

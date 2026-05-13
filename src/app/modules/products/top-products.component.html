@@ -1,0 +1,44 @@
+<h2 class="page-title">Top Products</h2>
+
+<div *ngIf="loading">Loading top products...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div class="product-grid" *ngIf="!loading && !error">
+  <app-product-card-shell
+    *ngFor="let product of products; trackBy: trackByProductId"
+  >
+    <img
+      card-media
+      [src]="product.imageUrl"
+      [alt]="product.name"
+      loading="lazy"
+      decoding="async"
+      width="200"
+      height="200"
+    />
+
+    <ng-container card-description>
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description }}</p>
+      <p>
+        <strong [style.color]="product.price | priceColor">
+          {{ product.price | indianRupee }}
+        </strong>
+      </p>
+    </ng-container>
+
+    <ng-container card-actions>
+      <button
+        class="btn-auth"
+        *ngIf="authService.isLoggedIn()"
+        (click)="addToCart(product)"
+      >
+        Add to Cart
+      </button>
+
+      <span *ngIf="!authService.isLoggedIn()" class="text-muted">
+        (Login to add items)
+      </span>
+    </ng-container>
+  </app-product-card-shell>
+</div>

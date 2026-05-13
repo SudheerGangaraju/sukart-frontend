@@ -1,0 +1,115 @@
+<main class="dashboard">
+  <h1>Dashboard</h1>
+
+  <div *ngIf="loading" class="status">Loading dashboard...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <ng-container *ngIf="!loading && !error">
+    <section class="dashboard-top-row">
+      <div class="top-products-panel">
+        <div class="panel-header">
+          <h2>Top Products</h2>
+          <span>{{ topProducts.length }} featured</span>
+        </div>
+
+        <div class="top-product-cards">
+          <article
+            class="top-product-card"
+            *ngFor="let product of topProducts; trackBy: trackByProductId"
+          >
+            <img [src]="product.imageUrl" [alt]="product.name" />
+            <div>
+              <h3>{{ product.name }}</h3>
+              <p>{{ product.description }}</p>
+              <strong [style.color]="product.price | priceColor">
+                {{ product.price | indianRupee }}
+              </strong>
+            </div>
+          </article>
+          <p *ngIf="topProducts.length === 0" class="empty-card">
+            No top products available.
+          </p>
+        </div>
+      </div>
+
+      <section class="user-card">
+        <span>Signed in as</span>
+        <strong>{{ username }}</strong>
+      </section>
+    </section>
+
+  <section class="dashboard-grid">
+    <div class="table-panel">
+      <div class="panel-header">
+        <h2>Available Products</h2>
+        <span>{{ products.length }} items</span>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Description</th>
+            <th class="number">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products; trackBy: trackByProductId">
+            <td>
+              <div class="product-cell">
+                <img [src]="product.imageUrl" [alt]="product.name" />
+                <strong>{{ product.name }}</strong>
+              </div>
+            </td>
+            <td>{{ product.description }}</td>
+            <td class="number" [style.color]="product.price | priceColor">
+              {{ product.price | indianRupee }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-panel">
+      <div class="panel-header">
+        <h2>Items In Cart</h2>
+        <span [style.color]="getCartTotal() | priceColor">
+          Total: {{ getCartTotal() | indianRupee }}
+        </span>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th class="number">Quantity</th>
+            <th class="number">Price</th>
+            <th class="number">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cartItems; trackBy: trackByCartItemId">
+            <td>{{ item.product?.name || 'Product #' + item.productId }}</td>
+            <td class="number">{{ item.quantity }}</td>
+            <td
+              class="number"
+              [style.color]="(item.product?.price || 0) | priceColor"
+            >
+              {{ (item.product?.price || 0) | indianRupee }}
+            </td>
+            <td
+              class="number"
+              [style.color]="(item.product?.price || 0) * item.quantity | priceColor"
+            >
+              {{ (item.product?.price || 0) * item.quantity | indianRupee }}
+            </td>
+          </tr>
+          <tr *ngIf="cartItems.length === 0">
+            <td colspan="4" class="empty-state">Your cart is empty.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  </ng-container>
+</main>

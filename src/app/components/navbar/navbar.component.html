@@ -1,0 +1,63 @@
+<nav class="navbar">
+  <!-- LEFT SECTION -->
+  <div class="nav-left">
+    <a *ngIf="loggedIn" routerLink="/dashboard">Dashboard</a>
+    <div class="nav-menu">
+      <a routerLink="/products">Products</a>
+      <div class="submenu">
+        <a routerLink="/products/top-products">Top Products</a>
+      </div>
+    </div>
+    <a routerLink="/about">About Us</a>
+    <a routerLink="/contact">Contact Us</a>
+    <a routerLink="/ai">AI Assistant</a>
+    <a routerLink="/test" >Test Space</a>
+  </div>
+
+  <!-- RIGHT SECTION -->
+  <div class="nav-right">
+    <label class="theme-switcher">
+      <span>Theme</span>
+      <select
+        #themeSelect
+        [ngModel]="selectedTheme"
+        (ngModelChange)="onThemeChange($event)"
+      >
+        <option *ngFor="let theme of availableThemes" [value]="theme.value">
+          {{ theme.label }}
+        </option>
+      </select>
+    </label>
+
+    <!-- LOGIN button (only when NOT logged in) -->
+    <a
+      *ngIf="!loggedIn"
+      routerLink="/auth/login"
+      class="btn-auth"
+      (click)="login()"
+    >
+      Login
+    </a>
+
+    <!-- LOGOUT button (only when logged in) -->
+    <a *ngIf="loggedIn" routerLink="/cart" (mouseenter)="logCartBadgeFromChild()">
+      Cart
+      <app-navbar-cart-badge
+        [count]="(cartCount$ | async) || 0"
+      ></app-navbar-cart-badge>
+    </a>
+    <button
+      type="button"
+      *ngIf="loggedIn"
+      class="btn-auth"
+      (click)="focusThemeSelect()"
+    >
+      Focus Theme
+    </button>
+    <button *ngIf="loggedIn" (click)="logout()" class="btn-auth">
+      Logout
+    </button>
+  </div>
+</nav>
+
+<hr />

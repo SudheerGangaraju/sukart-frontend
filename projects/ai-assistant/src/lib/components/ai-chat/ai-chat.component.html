@@ -1,0 +1,35 @@
+<section class="ai-chat-shell" aria-labelledby="ai-chat-title">
+  <div class="ai-chat-panel">
+    <header class="ai-chat-header">
+      <span class="ai-avatar" aria-hidden="true">AI</span>
+      <div>
+        <p class="eyebrow">Smart shopping assistant</p>
+        <h2 id="ai-chat-title">Find the right product faster</h2>
+      </div>
+    </header>
+
+    <label class="prompt-label" for="ai-prompt">What are you looking for?</label>
+    <textarea
+      id="ai-prompt"
+      [(ngModel)]="prompt"
+      placeholder="Ask something like best products under 50000"
+      rows="5"
+    ></textarea>
+
+    <div class="actions">
+      <p class="hint">Try a budget, brand, or feature you care about.</p>
+      <button type="button" (click)="askAI()" [disabled]="loading || !prompt.trim()">
+        {{ loading ? 'Thinking...' : 'Ask AI' }}
+      </button>
+    </div>
+
+    <div *ngIf="loading" class="response" aria-live="polite">
+      <p>Finding helpful recommendations...</p>
+    </div>
+
+    <div *ngIf="response && !loading" class="response" aria-live="polite">
+      <strong>Response</strong>
+      <p>{{ response }}</p>
+    </div>
+  </div>
+</section>

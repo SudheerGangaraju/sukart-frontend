@@ -1,0 +1,56 @@
+.about-card {
+  max-width: 760px;
+  margin: 2rem auto;
+  padding: 2.25rem;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  color: #1f2937;
+  border: 1px solid #dbe4ea;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2563eb;
+}
+
+.about-card h2 {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+  color: #0f172a;
+}
+
+.intro {
+  margin: 0 0 1.5rem;
+  line-height: 1.8;
+  color: #334155;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.about-block {
+  padding: 1.1rem 1.2rem;
+  border-radius: 14px;
+  background: #eef5ff;
+  border: 1px solid #d6e6ff;
+}
+
+.about-block h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.05rem;
+  color: #0f172a;
+}
+
+.about-block p {
+  margin: 0;
+  line-height: 1.7;
+  color: #475569;
+}

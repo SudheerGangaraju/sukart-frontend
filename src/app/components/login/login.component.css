@@ -1,0 +1,127 @@
+/* Lightweight background to reduce LCP cost on the login screen */
+.login-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  background:
+    radial-gradient(circle at top left, rgba(96, 165, 250, 0.28), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(251, 146, 60, 0.18), transparent 30%),
+    linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #334155 100%);
+}
+
+.login-card {
+  position: relative;
+  width: min(380px, 100%);
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.28);
+  text-align: center;
+  color: #fff;
+  animation: fadeIn 0.45s ease-out;
+}
+
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 0.2rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  color: #dbe4f0;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #f97316, #ea580c);
+  color: #fff;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.btn-login:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn-login:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.login-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #eee;
+}
+
+.btn-register {
+  color: #eff6ff;
+  text-decoration: none;
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.btn-register:hover {
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  transform: translateY(-1px);
+}
+
+.error {
+  margin-top: 1rem;
+  color: #fecaca;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .login-card,
+  .btn-login,
+  .btn-register {
+    animation: none;
+    transition: none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

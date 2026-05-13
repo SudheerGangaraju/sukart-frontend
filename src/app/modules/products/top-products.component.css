@@ -1,0 +1,39 @@
+.page-title {
+  margin: var(--space-6) var(--space-6) 0;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-5);
+  padding: var(--space-6);
+}
+
+.btn-auth {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  color: #fff;
+  font-size: 0.95rem;
+  background: var(--color-primary);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.btn-auth:hover {
+  transform: translateY(-1px);
+}
+
+.text-muted {
+  display: inline-block;
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+.error {
+  margin: var(--space-6);
+  color: var(--color-danger);
+}

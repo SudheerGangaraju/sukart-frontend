@@ -1,0 +1,64 @@
+:root {
+  --color-bg: #f4f7fb;
+  --color-surface: #ffffff;
+  --color-surface-muted: #eef4fb;
+  --color-text: #172033;
+  --color-text-muted: #5b667a;
+  --color-primary: #0f6cbd;
+  --color-primary-strong: #0b5aa0;
+  --color-accent: #f97316;
+  --color-border: #d8e1ec;
+  --color-success: #1f9d63;
+  --color-danger: #dc2626;
+  --shadow-sm: 0 4px 10px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 12px 30px rgba(15, 23, 42, 0.12);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --font-body: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body.theme-default {
+  background: linear-gradient(180deg, #f8fbff 0%, var(--color-bg) 100%);
+  color: var(--color-text);
+}
+
+body.theme-dark {
+  --color-bg: #0f172a;
+  --color-surface: #162133;
+  --color-surface-muted: #1d2b42;
+  --color-text: #e8eef8;
+  --color-text-muted: #b3c0d4;
+  --color-primary: #60a5fa;
+  --color-primary-strong: #3b82f6;
+  --color-accent: #fb923c;
+  --color-border: #2a3b59;
+  --color-success: #34d399;
+  --color-danger: #f87171;
+  --shadow-sm: 0 4px 12px rgba(2, 6, 23, 0.3);
+  --shadow-md: 0 16px 36px rgba(2, 6, 23, 0.34);
+  background: linear-gradient(180deg, #111827 0%, var(--color-bg) 100%);
+  color: var(--color-text);
+}
+
+body.theme-forest {
+  --color-bg: #eff7f1;
+  --color-surface: #ffffff;
+  --color-surface-muted: #e4f1e7;
+  --color-text: #1f2d1f;
+  --color-text-muted: #56705a;
+  --color-primary: #2f855a;
+  --color-primary-strong: #276749;
+  --color-accent: #c05621;
+  --color-border: #cfe1d1;
+  --color-success: #2f855a;
+  --color-danger: #c53030;
+  background: linear-gradient(180deg, #f7fcf8 0%, var(--color-bg) 100%);
+  color: var(--color-text);
+}
